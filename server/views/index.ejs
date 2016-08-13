@@ -1,10 +1,240 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                background: #fbfbfb;
 
+                height: 2000px;
+            }
+
+            header {
+                display: block;
+                position: fixed;
+
+                width: 100%;
+                height: 64px;
+                background: #ffffff;
+                box-shadow: 0 2px 5px rgba(11, 12, 12, 0.16);
+            }
+
+            header h1 {
+                display: inline-block;
+
+                width: 132px;
+                height: 38px;
+                margin: 13px 0;
+
+                color: transparent;
+                font-size: 0;
+
+                background: url('/resource/img/logo.png');
+            }
+
+            .container {
+                width: 100%;
+                max-width: 990px;
+                margin: 0 auto;
+            }
+
+            .header__logo {
+                display: inline-block;
+            }
+
+            .header__menu {
+                float: right;
+                display: block;
+
+                margin: 0;
+                padding: 0;
+
+                list-style: none;
+            }
+
+            .header__menu > li {
+                display: inline-block;
+
+                color: #444444;
+                font-size: 16px;
+                line-height: 64px;
+            }
+
+            .header__menu > li > a[role="link"] {
+                cursor: pointer;
+                display: block;
+            }
+
+            .header__menu > li + li {
+                margin-left: 12px;
+            }
+
+            .content {
+                padding: 64px 0 0;
+                text-align: left;
+            }
+
+            .img_game1 {
+                display: inline-block;
+
+                width: 400px;
+                height:400px;
+
+                color: transparent;
+                font-size: 0;
+
+                background: url('/resource/img/123.png');
+            }
+
+            .info_game1 {
+                display: inline-block;
+
+                width: 400px;
+                height:400px;
+
+                color: transparent;
+                font-size: 10;
+
+            }
+
+            .box {
+                display: block;
+                width: 100%;
+                min-height: 100px;
+                margin: 32px 0 0;
+
+                background: #ffffff;
+                border-radius: 3px;
+                box-shadow: 0 2px 5px rgba(11, 12, 12, 0.16);
+            }
+
+            .box:after {
+                display: table;
+                clear: both;
+                content: '';
+            }
+
+            .box__image {
+                float: left;
+                display: block;
+                width: 50%;
+                height: 300px;
+
+                overflow: hidden;
+            }
+
+            .box__image > img {
+                width: 100%;
+                transition: all 0.5s ease;
+            }
+
+            .box__image:hover > img {
+                width: 120%;
+                margin-left: -10%;
+                opacity: 0.3;
+            }
+
+            .box__decription {
+                float: left;
+                display: block;
+                width: 50%;
+                padding: 16px 24px;
+
+                box-sizing: border-box;
+            }
+
+            a[role="button"] {
+                cursor: pointer;
+                display: inline-block;
+                padding: 0 24px;
+
+                color: #ffffff;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 48px;
+
+                border-radius: 3px;
+                background: #de5252;
+                box-shadow: 0 2px 5px rgba(11, 12, 12, 0.16);
+            }
+        </style>
     </head>
 
     <body>
+        <header>
+            <div class="container">
+                <a role="link" href="/" class="header__logo" ><h1>DUDE</h1></a>
+                <ul class="header__menu">
+                    <li><a role="link">contactA</a></li>
+                    <li><a role="link">contactB</a></li>
+                    <li><a role="link">contactC</a></li>
+                </ul>
+            </div>
+        </header>
 
+        <div class="content">
+            <div class="container">
+                <div class="box">
+                    <div class="box__image">
+                        <img src="/resource/img/123.png" />
+                    </div>
+                    <div class="box__decription">
+                        <h3>제먹젬고쟐도ㅔ쟈돌</h3>
+                        <p>
+                            tkjsekflwjekflwjefkllwjefklwe
+                        </p>
+                        <a role="button">시작하기</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box__image">
+                        <img src="/resource/img/123.png" />
+                    </div>
+                    <div class="box__decription">
+                        <h3>제먹젬고쟐도ㅔ쟈돌</h3>
+                        <p>
+                            tkjsekflwjekflwjefkllwjefklwe
+                        </p>
+                        <a role="button">시작하기</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box__image">
+                        <img src="/resource/img/123.png" />
+                    </div>
+                    <div class="box__decription">
+                        <h3>제먹젬고쟐도ㅔ쟈돌</h3>
+                        <p>
+                            tkjsekflwjekflwjefkllwjefklwe
+                        </p>
+                        <a role="button">시작하기</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box__image">
+                        <img src="/resource/img/123.png" />
+                    </div>
+                    <div class="box__decription">
+                        <h3>제먹젬고쟐도ㅔ쟈돌</h3>
+                        <p>
+                            tkjsekflwjekflwjefkllwjefklwe
+                        </p>
+                        <a role="button">시작하기</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game1">
+                <a class = "img_game1"><h1>img_game1</h1></a>
+                <a class = "info_game1">
+                    aaa
+                </a>
+
+            </div>
+        </div>
     </body>
 </html>
