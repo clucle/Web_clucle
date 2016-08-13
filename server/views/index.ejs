@@ -3,11 +3,11 @@
     <head>
         <style>
             html, body {
+                width: 100%;
+                height: 100%;
                 margin: 0;
                 padding: 0;
                 background: #fbfbfb;
-
-                height: 2000px;
             }
 
             header {
@@ -34,9 +34,14 @@
             }
 
             .container {
+                position: relative;
                 width: 100%;
                 max-width: 990px;
                 margin: 0 auto;
+            }
+
+            .container.game {
+                max-width: 800px;
             }
 
             .header__logo {
@@ -72,37 +77,18 @@
 
             .content {
                 padding: 64px 0 0;
+
                 text-align: left;
             }
 
-            .img_game1 {
-                display: inline-block;
-
-                width: 400px;
-                height:400px;
-
-                color: transparent;
-                font-size: 0;
-
-                background: url('/resource/img/123.png');
-            }
-
-            .info_game1 {
-                display: inline-block;
-
-                width: 400px;
-                height:400px;
-
-                color: transparent;
-                font-size: 10;
-
-            }
-
             .box {
+                position: fixed;
+                left: calc(50% - 400px);
+                top: 25%;
+
                 display: block;
-                width: 100%;
-                min-height: 100px;
-                margin: 32px 0 0;
+                width: 800px;
+                height : 50%;
 
                 background: #ffffff;
                 border-radius: 3px;
@@ -119,7 +105,7 @@
                 float: left;
                 display: block;
                 width: 50%;
-                height: 300px;
+                height: 100%;
 
                 overflow: hidden;
             }
@@ -158,6 +144,128 @@
                 background: #de5252;
                 box-shadow: 0 2px 5px rgba(11, 12, 12, 0.16);
             }
+
+            .game_screen {
+                position: fixed;
+                left: 0;
+                top: calc(50% - 250px);
+
+                width: 100%;
+                height: 500px;
+
+                overflow: hidden;
+            }
+
+            .game_list {
+                position: absolute;
+                left: 0;
+                top: 0;
+
+                display: block;
+                width: 5000px;
+                padding: 0;
+                margin: 0;
+
+                transition: all 0.5s ease;
+            }
+
+            .game_list li {
+                display: inline-block;
+                opacity: 0.5;
+
+                width: 800px;
+                height: 400px;
+
+                color: transparent;
+                font-size: 0;
+
+                background: #ffffff;
+                box-shadow: 0 2px 5px rgba(11, 12, 12, 0.16);
+                border-radius: 3px;
+            }
+
+            .game_list li + li{
+                margin-left:20px;
+            }
+
+            .game_list li.active {
+                opacity: 1;
+            }
+
+            .button--left {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                left: -80px;
+                top:calc(175px);
+                color: transparent;
+                font-size: 0;
+
+            }
+
+            .button--left:before {
+                content: ' ';
+
+                position: absolute;
+                left: 0;
+                top: 0;
+
+                display: block;
+                width: 50px;
+                height: 50px;
+
+                border-top: 15px solid #ff0000;
+                border-right: 15px solid #ff0000;
+
+                transform: rotate(-135deg);
+            }
+
+            .button--left:hover:before {
+                border-top: 5px solid #000000;
+                border-right: 5px solid #000000;
+
+            }
+            .button--right {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                left: 820px;
+                top:calc(175px);
+                color: transparent;
+                font-size: 0;
+
+            }
+
+            .button--right:before {
+                content: ' ';
+
+                position: absolute;
+                left: 0;
+                top: 0;
+
+                display: block;
+                width: 50px;
+                height: 50px;
+
+                border-top: 15px solid #ff0000;
+                border-right: 15px solid #ff0000;
+
+                transform: rotate(45deg);
+            }
+
+            .button--left:hover:before {
+                border-top: 15px solid #000000;
+                border-right: 15px solid #000000;
+
+            }
+            .container_bottom{
+
+                position: fixed;
+                top: 700px;
+                left:calc(50% - 96px);
+                width: 100%;
+                height: 50px;
+            }
         </style>
     </head>
 
@@ -173,68 +281,52 @@
             </div>
         </header>
 
-        <div class="content">
-            <div class="container">
-                <div class="box">
-                    <div class="box__image">
-                        <img src="/resource/img/123.png" />
-                    </div>
-                    <div class="box__decription">
-                        <h3>제먹젬고쟐도ㅔ쟈돌</h3>
-                        <p>
-                            tkjsekflwjekflwjefkllwjefklwe
-                        </p>
-                        <a role="button">시작하기</a>
-                    </div>
-                </div>
+        <div class="game_screen">
 
-                <div class="box">
-                    <div class="box__image">
-                        <img src="/resource/img/123.png" />
-                    </div>
-                    <div class="box__decription">
-                        <h3>제먹젬고쟐도ㅔ쟈돌</h3>
-                        <p>
-                            tkjsekflwjekflwjefkllwjefklwe
-                        </p>
-                        <a role="button">시작하기</a>
-                    </div>
-                </div>
+            <div class="container game">
+                <ul id="list" class = "game_list">
+                    <li class="img_game1 active">game1</li>
+                    <li class="img_game1">game1</li>
+                    <li class="img_game1">game1</li>
+                    <li class="img_game1">game1</li>
+                </ul>
 
-                <div class="box">
-                    <div class="box__image">
-                        <img src="/resource/img/123.png" />
-                    </div>
-                    <div class="box__decription">
-                        <h3>제먹젬고쟐도ㅔ쟈돌</h3>
-                        <p>
-                            tkjsekflwjekflwjefkllwjefklwe
-                        </p>
-                        <a role="button">시작하기</a>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="box__image">
-                        <img src="/resource/img/123.png" />
-                    </div>
-                    <div class="box__decription">
-                        <h3>제먹젬고쟐도ㅔ쟈돌</h3>
-                        <p>
-                            tkjsekflwjekflwjefkllwjefklwe
-                        </p>
-                        <a role="button">시작하기</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="game1">
-                <a class = "img_game1"><h1>img_game1</h1></a>
-                <a class = "info_game1">
-                    aaa
-                </a>
-
+                <a class="button--left" onclick="move(-1)">왼쪽</a>
+                <a class="button--right" onclick="move(1)">오른쪽</a>
             </div>
         </div>
+
+        <div class="container_bottom">
+            <a role="button" onclick="moveTo(0)">1</a>
+            <a role="button" onclick="moveTo(1)">2</a>
+            <a role="button" onclick="moveTo(2)">3</a>
+            <a role="button" onclick="moveTo(3)">4</a>
+        </div>
+
+        <script>
+            var index = 0;
+
+            var move = function(delta) {
+                var list = document.getElementById("list");
+                index += delta;
+
+                var children = list.children;
+                for (var i = 0; i < children.length; i++) {
+                    children[i].className = (index === i ? "img_game1 active" : "img_game1");
+                }
+
+                list.style.left = index * -820 + "px";
+            }
+
+            var moveTo = function(value) {
+                index = value;
+                list.style.left = index * -820 + "px";
+                var children = list.children;
+                for (var i = 0; i < children.length; i++) {
+                    children[i].className = (index === i ? "img_game1 active" : "img_game1");
+                }
+            }
+
+        </script>
     </body>
 </html>
