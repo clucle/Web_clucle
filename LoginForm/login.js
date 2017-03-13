@@ -1,0 +1,4 @@
+
+function clickSignIn() {
+	alert("A");
+}
