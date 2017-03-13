@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>clucle's Login</title>
 <meta charset="UTF-8">
+<script src="login.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
 <style>
 body,h1 {font-family: "Raleway", sans-serif}
 body, html {height: 100%}
@@ -46,15 +48,21 @@ input[type=password] {
 }
 
 .btn {
-    background-color: #555555;
+    background-color: #9E9E9E;
+    color: rgba(0, 0, 0, 0.87);
     border: none;
-    color: white;
     padding: 5px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    border-radius: 2px;
-    font-size: 16px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.5s ease;
+}
+
+.btn:hover {
+    background-color: #E0E0E0;
 }
 
 #login_div {
@@ -68,7 +76,7 @@ input[type=password] {
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
   <div class="w3-display-topleft w3-padding-large w3-xlarge" style="color: rgb(0, 0, 0);">
-    BATTLE AI
+    OSORI
   </div>
   <div class="w3-display-middle">
     <div class="box" style="border-radius: 5px;">
@@ -80,16 +88,17 @@ input[type=password] {
       <label style="color: rgb(0, 0, 0);"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
       <br/>
-      <div id="login_div">
-        <button class="btn" type="submit" style="width: 48%">Sign In</button>
-        <button class="btn" type="submit" style="width: 48%">Sign Up</button>
+      <div id="login_div" style="margin-top: 6px">
+        <button class="btn" type="submit" style="width: 46%" onclick="clickSignIn()">Sign In</button>
+        <button class="btn" type="submit" style="width: 46%">Sign Up</button>
       </div>
     </div>
   </div>
-  <div class="w3-display-bottomleft w3-padding-large">
-    Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+  <div class="w3-display-bottomleft w3-padding-large" style="color: black;">
+    https://www.github.com/clucle
   </div>
 </div>
 
 </body>
+
 </html>
