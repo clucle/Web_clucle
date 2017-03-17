@@ -1,0 +1,24 @@
+body {
+	width: 100%;
+	margin: auto;
+
+	background-image: url('backosori.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+#header {
+	text-align: center;
+	padding: 20px;
+}
+
+.box {
+	margin:auto;
+
+    width: 94%;
+    height: 94%;
+
+    background-color:rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+}
