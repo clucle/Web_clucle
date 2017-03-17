@@ -37,24 +37,26 @@ var Room = mongoose.model('Message', roomSchema);
 /* Connection */
 io.sockets.on('connection', function(socket){
 	var query = Room.find({});
-	query.sort('-created').limit(8).exec(function(err, docs){
+	query.sort('-created').limit(3).exec(function(err, docs){
 		if(err) throw err;
 		socket.emit('load records', docs);
 	});
 
 	socket.on('open', function(data, callback){
-		var newMsg = new Chat({msg: msg, nick: socket.name});
+		var newMsg = new Room({msg: 'open', name: data});
 		newMsg.save(function(err){
 			if(err) throw err;
-			io.sockets.emit('new message', {msg: msg, nick: socket.name});
+			io.sockets.emit('change', {msg: newMsg.msg,
+				name: newMsg.name, created: newMsg.created});
 		});
 	});
 
 	socket.on('close', function(data, callback){
-		var newMsg = new Chat({msg: msg, nick: socket.name});
+		var newMsg = new Room({msg: 'close', name: data});
 		newMsg.save(function(err){
 			if(err) throw err;
-			io.sockets.emit('new message', {msg: msg, nick: socket.name});
+			io.sockets.emit('change', {msg: newMsg.msg,
+				name: newMsg.name, created: newMsg.created});
 		});
 	});
 
