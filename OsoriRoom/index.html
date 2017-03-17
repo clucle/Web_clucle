@@ -3,9 +3,8 @@
 <html>
 <head>
   <title> 동방 열렸나요? </title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="source/styles.css">
   <script src = "http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src = "/socket.io/socket.io.js"></script>
 </head>
 
 <body>
@@ -17,9 +16,15 @@
     <div id="open"></div>
 
     <form id="setOpen">
-      <input type="text" placeholder="이름 적어주세요" id="nickname"></input>
+      <input type="text" placeholder="이름 적어주세요" id="name_open"></input>
+      <input type="submit" value="열기"></input>
+    </form>
+
+    <form id="setClose">
+      <input type="text" placeholder="이름 적어주세요" id="name_close"></input>
       <input type="submit" value="잠그기"></input>
     </form>
+
   </div>
 
 </body>

@@ -2,7 +2,7 @@ body {
 	width: 100%;
 	margin: auto;
 
-	background-image: url('backosori.jpg');
+	background-image: url('../public/backosori.jpg');
     min-height: 100%;
     background-position: center;
     background-size: cover;
@@ -25,6 +25,10 @@ body {
 
 #setOpen {
 	text-align: center;
+}
+
+#setClose {
+    text-align: center;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

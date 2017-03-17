@@ -1,14 +1,23 @@
-var express = require('express'),
-	app = express(),
-	server = require('http').createServer(app),
-	io = require('socket.io').listen(server);
-	mongoose = require('mongoose'),
-	users = {};
+var express = require('express');
+var	app = express();
+var	server = require('http').createServer(app);
+var	io = require('socket.io').listen(server);
+var	mongoose = require('mongoose');
+var	users = {};
 
+/* server on localhost:3000 */
 server.listen(3000);
 
+/* routing */
+app.use('/source', express.static('source'));
+app.use('/public', express.static('public'));
 
-mongoose.connect('mongodb://localhost/chat', function(err){
+app.get('/', function(req, res){
+	res.sendFile(__dirname + '/index.html');
+});
+
+/* mongo connection */
+mongoose.connect('mongodb://localhost/osori', function(err){
 	if(err){
 		console.log(err);
 	} else{
@@ -16,70 +25,37 @@ mongoose.connect('mongodb://localhost/chat', function(err){
 	}
 });
 
-var chatSchema = mongoose.Schema({
-	nick: String,
+/* Set Schema */
+var roomSchema = mongoose.Schema({
+	name: String,
 	msg: String,
 	created: {type: Date, default: Date.now}
 });
-var Chat = mongoose.model('Message', chatSchema);
+var Room = mongoose.model('Message', roomSchema);
 
-app.get('/', function(req, res){
-	res.sendFile(__dirname + '/index.html');
-});
 
+/* Connection */
 io.sockets.on('connection', function(socket){
-	var query = Chat.find({});
+	var query = Room.find({});
 	query.sort('-created').limit(8).exec(function(err, docs){
 		if(err) throw err;
-		socket.emit('load old msgs', docs);
-	});
-	socket.on('new user', function(data, callback){
-		if (data in users){
-			callback(false);
-		} else{
-			callback(true);
-			socket.nickname = data;
-			users[socket.nickname] = socket;
-			updateNicknaes();
-			
-		}
+		socket.emit('load records', docs);
 	});
 
-	function updateNicknaes(){
-		io.sockets.emit('usernames', Object.keys(users));
-	}
-
-	socket.on('send message', function(data, callback){
-		var msg = data.trim();
-		if(msg.substr(0,3) === '/w '){
-			msg = msg.substr(3);
-			var ind = msg.indexOf(' '); // 공백 있을때 까지가 이름
-			if(ind !== -1){
-				var name = msg.substring(0, ind);
-				var msg = msg.substring(ind + 1);
-				if(name in users){
-					users[name].emit('whisper', {msg: msg, nick: socket.nickname});
-					console.log('Whisper!');
-				} else{
-					callback('Error! Enter a valid user.');
-				}
-			} else{
-				callback('Error Please enter a message for your whisper');
-			}
-		} else{
-			var newMsg = new Chat({msg: msg, nick: socket.nickname});
-			newMsg.save(function(err){
-				if(err) throw err;
-				io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
-			});
-			
-		}
-		
+	socket.on('open', function(data, callback){
+		var newMsg = new Chat({msg: msg, nick: socket.name});
+		newMsg.save(function(err){
+			if(err) throw err;
+			io.sockets.emit('new message', {msg: msg, nick: socket.name});
+		});
 	});
 
-	socket.on('disconnect', function(data){
-			if(!socket.nickname) return;
-			delete users[socket.nickname];
-			updateNicknaes();
+	socket.on('close', function(data, callback){
+		var newMsg = new Chat({msg: msg, nick: socket.name});
+		newMsg.save(function(err){
+			if(err) throw err;
+			io.sockets.emit('new message', {msg: msg, nick: socket.name});
+		});
 	});
+
 });
