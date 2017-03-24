@@ -21,3 +21,13 @@ https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes
 자바스크립트에서 HTML형식을 그대로 사용 할 수 있다.
 
 XML-like syntax 를 native Javascript로 변경
+
+container element안에 반드시 포함해야한다
+
+jsx 안 js 는 {}로 wrapping
+
+ex) 
+1.
+ <div>{text}</div>
+2.
+ <div>{1==1 ? 'True':'False'}</div>
