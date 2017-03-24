@@ -1,0 +1,30 @@
+class Clucle extends React.Component {
+  render() {
+    let text = 'React Tutor'
+    let style = {
+      backgroundColor:'black',
+      color:'white'
+    };
+    
+    return(
+      <div style={style}>
+        {text}
+        {/* this is comment*/}
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h3>Account</h3>
+        <Clucle></Clucle>
+        <Clucle></Clucle>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App/>,document.getElementById('headBar'));
