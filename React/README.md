@@ -15,3 +15,9 @@ React는 완성된 set에 대해 변경점을 찾고 변경된 부분만 수정�
 Babel - ES6을 호환 안되는 브라우저에서 호환 되게 하기 위해 사용
 
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes
+
+# JSX
+
+자바스크립트에서 HTML형식을 그대로 사용 할 수 있다.
+
+XML-like syntax 를 native Javascript로 변경
