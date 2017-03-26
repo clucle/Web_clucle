@@ -1,0 +1,29 @@
+class Test extends React.Component {
+  render() {
+    return(
+      <div>
+        <h1>Hello {this.props.name}</h1>
+        <h2>{this.props.number}</h2>
+        <div>{this.props.children}</div>
+      </div>
+    );
+  }
+}
+
+Test.propTypes = {
+  name:React.PropTypes.string,
+  number:React.PropTypes.number.isRequired
+};
+Test.defaultProps = {
+  name: 'none'
+}
+
+class App extends React.Component {
+  render() {
+    return(
+      <Test number={3}>Hi!!</Test>
+    );
+  }
+}
+
+ReactDOM.render(<App/>, document.getElementById('props'));
