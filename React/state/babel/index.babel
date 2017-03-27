@@ -1,0 +1,35 @@
+class Counter extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      value:0
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick() {
+    this.setState({
+      value:this.state.value + 1
+    })
+  }
+  
+  render() {
+    return(
+      <div>
+        <div>{this.state.value}</div>
+        <button onClick={this.handleClick}>Press</button>
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return(
+      <Counter/>
+    );
+  }
+}
+
+ReactDOM.render(<App/>, document.getElementById('state'));
