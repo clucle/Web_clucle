@@ -20,6 +20,7 @@ Player.prototype.UpdatePlayer = function() {
             this.state = 2;
             motioncount = 0;
             motion = 0;
+            diskArray.push(new Disk(this.xPos, this.yPos, this.dir));
         }
         if (keys[38]) {
             this.yPos-=this.speed;
@@ -59,7 +60,6 @@ Player.prototype.UpdatePlayer = function() {
             this.motioncount = 0;
             this.motion++;
             if (this.motion > 2) {
-                console.log("A");
                 this.state = 0;
                 this.motioncount = 0;
             }
