@@ -15,9 +15,15 @@ function Render() {
 		context.fillRect(0, 0, width, height);
 
 		player.UpdatePlayer();
-		
-		context.drawImage(imgPlayer, player.motion * 24, player.dir * 32, 24, 32,
-						player.xPos, player.yPos, 48, 64);
+		if (player.state < 2) {
+			context.drawImage(imgPlayer, player.motion * 24, player.dir * 32, 24, 32,
+					player.xPos, player.yPos, 48, 64);
+		} else if (player.state == 2) {
+			console.log(player.motion * 24 + 72);
+			context.drawImage(imgPlayer, player.motion * 24 + 72, player.dir * 32, 24, 32,
+					player.xPos, player.yPos, 48, 64);
+		}
+
 		setTimeout(Render, 40);
 }
 
