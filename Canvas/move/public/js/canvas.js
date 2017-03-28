@@ -14,7 +14,8 @@ function Render() {
 		context.fillStyle='#ffffff';
 		context.fillRect(0, 0, width, height);
 
-		UpdatePlayer(player);
+		player.UpdatePlayer();
+		
 		context.drawImage(imgPlayer, player.motion * 24, player.dir * 32, 24, 32,
 						player.xPos, player.yPos, 48, 64);
 		setTimeout(Render, 40);

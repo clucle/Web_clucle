@@ -11,39 +11,39 @@ function Player(xPos, yPos) {
     this.state = 0;
 }
 
-function UpdatePlayer(player) {
+Player.prototype.UpdatePlayer = function() {
     var pressed = false;
-    if (player.motion > 2) player.motion = 0;
+    if (this.motion > 2) this.motion = 0;
     if (keys[38]) {
-        player.yPos-=player.speed;
-        player.dir = 0;
+        this.yPos-=this.speed;
+        this.dir = 0;
         pressed = true;
     }
     if (keys[40]) {
-        player.yPos+=player.speed;
-        player.dir = 2;
+        this.yPos+=this.speed;
+        this.dir = 2;
         pressed = true;
     }
     if (keys[39]) {
-        player.xPos+=player.speed;
-        player.dir = 1;
+        this.xPos+=this.speed;
+        this.dir = 1;
         pressed = true;
     }
     if (keys[37]) {
-        player.xPos-=player.speed;
-        player.dir = 3;
+        this.xPos-=this.speed;
+        this.dir = 3;
         pressed = true;
     }
     if (pressed == true) {
-        player.motioncount++;
-        if (player.motioncount > 6) {
-            player.motioncount = 0;
-            if (player.motion < 3) player.motion++;
-            if (player.motion > 2) player.motion = 0;
+        this.motioncount++;
+        if (this.motioncount > 6) {
+            this.motioncount = 0;
+            if (this.motion < 3) this.motion++;
+            if (this.motion > 2) this.motion = 0;
         }
     } else {
-        player.motioncount = 0;
-        player.motion = 0;
+        this.motioncount = 0;
+        this.motion = 0;
     }
 }
 
