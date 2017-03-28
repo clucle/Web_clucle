@@ -5,21 +5,19 @@ var width = canvas.width;
 var height = canvas.height;
 
 // Player Setting
-var player = Player(100, 100);
+var player = new Player(100, 100);
 
 var imgPlayer = new Image();
 imgPlayer.src = "public/resource/player.png";
 
 function Render() {
-	context.fillStyle='#ffffff';
-	context.fillRect(0, 0, width, height);
+		context.fillStyle='#ffffff';
+		context.fillRect(0, 0, width, height);
 
+		UpdatePlayer(player);
+		context.drawImage(imgPlayer, player.motion * 24, player.dir * 32, 24, 32,
+						player.xPos, player.yPos, 48, 64);
+		setTimeout(Render, 40);
 }
 
-function RenderCharacter() {
-	context.drawImage(imgPlayer, 0, 0, 24, 32, 0, 0, 48, 64);
-	setTimeout(RenderCharacter,40);
-}
-
-RenderCharacter();
 Render();
