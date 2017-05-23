@@ -26,8 +26,11 @@ container element안에 반드시 포함해야한다
 
 jsx 안 js 는 {}로 wrapping
 
-ex) 
+ex)
 1.
  <div>{text}</div>
 2.
  <div>{1==1 ? 'True':'False'}</div>
+
+
+ https://www.youtube.com/watch?v=GEoNiUcVwjE&list=PL9FpF_z-xR_GMujql3S_XGV2SpdfDBkeC
