@@ -12,6 +12,7 @@ class ContactDetails extends Component {
         this.handleToggle = this.handleToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     handleToggle() {
@@ -38,12 +39,23 @@ class ContactDetails extends Component {
         this.props.onEdit(this.state.name, this.state.commit);
     }
 
+    handleKeyPress(e) {
+        if (e.charCode===13) {
+            this.handleToggle();
+        }
+    }
+
     render() {
         const details = (
             <div>
                 <p>{this.props.contact.name}</p>
                 <p>{this.props.contact.commit}</p>
-
+                <p>
+                    <button onClick={this.handleToggle}>
+                        {this.state.isEdit ? 'OK' : 'Edit'}
+                    </button>
+                    <button onClick={this.props.onRemove}>Remove</button>
+                </p>
             </div>
         );
 
@@ -66,7 +78,14 @@ class ContactDetails extends Component {
                         placeholder="commit"
                         value={this.state.commit}
                         onChange={this.handleChange}
+                        onKeyPress={this.handleKeyPress}
                     />
+                </p>
+                <p>
+                    <button onClick={this.handleToggle}>
+                        {this.state.isEdit ? 'OK' : 'Edit'}
+                    </button>
+                    <button onClick={this.props.onRemove}>Remove</button>
                 </p>
             </div>
         );
@@ -79,12 +98,6 @@ class ContactDetails extends Component {
             <div>
                 <h2>Details</h2>
                 {this.props.isSelected ? view: blank}
-                <p>
-                    <button onClick={this.handleToggle}>
-                        {this.state.isEdit ? 'OK' : 'Edit'}
-                    </button>
-                    <button onClick={this.props.onRemove}>Remove</button>
-                </p>
             </div>
         );
     }
