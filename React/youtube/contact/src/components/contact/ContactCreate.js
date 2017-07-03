@@ -28,7 +28,9 @@ class ContactCreate extends Component {
         this.setState({
             name: '',
             commit: '',
-        })
+        });
+
+        this.nameInput.focus();
     }
 
     handleKeyPress(e) {
@@ -48,6 +50,7 @@ class ContactCreate extends Component {
                         placeholder="name"
                         value={this.state.name}
                         onChange={this.handleChange}
+                        ref={(ref) => { this.nameInput = ref }}
                     />
                     <input
                         type="text"
